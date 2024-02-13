@@ -8,6 +8,11 @@
     $: redWon = blueScore === 0;
     $: blueWon = redScore === 0;
     $: gameOver = redWon || blueWon;
+
+    function newGame() {
+        blueScore = 20;
+        redScore = 20;
+    }
 </script>
 
 <div class="row mt-2">
@@ -16,7 +21,7 @@
     </div>
 </div>
 
-<dov class="row">
+<div class="row">
     <Team
         team="Red"
         bind:score={redScore}
@@ -29,4 +34,8 @@
         teamType={TeamType.TeamB}
         {gameOver}
     />
-</dov>
+</div>
+
+<div class="row mt-3">
+    <button on:click={newGame} class="btn btn-warning">Reset Game</button>
+</div>
