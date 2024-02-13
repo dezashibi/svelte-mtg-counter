@@ -41,7 +41,7 @@
 
 <div class="row">
     <div class="col">
-        <h2>{winningText}</h2>
+        <h2 class="text-center">{winningText}</h2>
     </div>
 </div>
 
