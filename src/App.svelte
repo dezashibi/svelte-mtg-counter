@@ -1,4 +1,5 @@
 <script lang="ts">
+    import NewReset from "./components/NewReset.svelte";
     import Team from "./components/Team.svelte";
     import { TeamType } from "./helpers/enums";
 
@@ -8,6 +9,8 @@
     $: redWon = blueScore === 0;
     $: blueWon = redScore === 0;
     $: gameOver = redWon || blueWon;
+
+    $: winningText = gameOver ? (redWon ? "Red Won" : "Blue Won") : "";
 
     function newGame() {
         blueScore = 20;
@@ -36,6 +39,14 @@
     />
 </div>
 
+<div class="row">
+    <div class="col">
+        <h2>{winningText}</h2>
+    </div>
+</div>
+
 <div class="row mt-3">
-    <button on:click={newGame} class="btn btn-warning">Reset Game</button>
+    <div class="col">
+        <NewReset {gameOver} onClick={newGame} />
+    </div>
 </div>
