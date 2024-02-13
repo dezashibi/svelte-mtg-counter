@@ -5,6 +5,8 @@
     export let score: number;
     export let teamType: TeamType;
 
+    export let gameOver: boolean;
+
     function add() {
         score += 1;
     }
@@ -21,8 +23,12 @@
     >
         Team {team}: {score}
     </h2>
-    <button on:click={add} class="btn btn-success">+</button>
-    <button on:click={sub} class="btn btn-danger">-</button>
+    <button disabled={gameOver} on:click={add} class="btn btn-success">
+        +
+    </button>
+    <button disabled={gameOver} on:click={sub} class="btn btn-danger">
+        -
+    </button>
 </div>
 
 <style>

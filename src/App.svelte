@@ -4,6 +4,10 @@
 
     let blueScore = 20;
     let redScore = 20;
+
+    $: redWon = blueScore === 0;
+    $: blueWon = redScore === 0;
+    $: gameOver = redWon || blueWon;
 </script>
 
 <div class="row mt-2">
@@ -13,6 +17,16 @@
 </div>
 
 <dov class="row">
-    <Team team="Red" bind:score={redScore} teamType={TeamType.TeamA} />
-    <Team team="Blue" bind:score={blueScore} teamType={TeamType.TeamB} />
+    <Team
+        team="Red"
+        bind:score={redScore}
+        teamType={TeamType.TeamA}
+        {gameOver}
+    />
+    <Team
+        team="Blue"
+        bind:score={blueScore}
+        teamType={TeamType.TeamB}
+        {gameOver}
+    />
 </dov>
